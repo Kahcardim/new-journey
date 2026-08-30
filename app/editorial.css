@@ -1,0 +1,16 @@
+.home-faq { background: #fff; }
+.home-faq > div:not(.section-heading) { max-width: 900px; margin: 0 auto; }
+.home-faq details,
+.faq-page details { border-bottom: 1px solid var(--line); }
+.home-faq summary,
+.faq-page summary { cursor: pointer; padding: 20px 4px; font-weight: 700; }
+.home-faq details p,
+.faq-page details p { color: var(--muted); line-height: 1.7; padding: 0 4px 20px; margin: 0; }
+.home-faq > .text-link { display: flex; width: max-content; margin: 28px auto 0; color: var(--teal); }
+.editorial h2 { margin-top: 44px; font-size: 2rem; }
+.editorial p,
+.editorial li { color: var(--muted); line-height: 1.8; }
+.editorial li { margin: 8px 0; }
+.article-cta { margin-top: 65px; padding: 42px; background: var(--cream); text-align: center; }
+.article-cta p { margin-bottom: 24px; }
+@media (max-width: 560px) { .article-cta { padding: 28px 20px; } }

@@ -1,0 +1,8 @@
+/* Dual public paths: first for GitHub Pages, second for direct/custom domains. */
+.hero-art {
+  background-image: url('/new-journey/new-journey-hero.webp'), url('/new-journey-hero.webp');
+}
+.family-photo,
+.family-page-photo {
+  background-image: url('/new-journey/new-journey-familia.webp'), url('/new-journey-familia.webp');
+}
