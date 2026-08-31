@@ -1,4 +1,5 @@
 import "./familias.css";
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/Icons";
 import { SiteShell } from "@/components/SiteShell";
@@ -24,7 +25,14 @@ export default function Familias() {
           </div>
         </div>
         <div className="family-page-photo">
-          <img src={`${assetBase}/new-journey-familia.webp`} alt="Família em conversa acolhedora" />
+          <Image
+            src={`${assetBase}/new-journey-familia.webp`}
+            alt="Família em conversa acolhedora"
+            width={1440}
+            height={1086}
+            priority
+            sizes="(max-width: 760px) calc(100vw - 52px), (max-width: 980px) 52vw, 680px"
+          />
         </div>
       </section>
 

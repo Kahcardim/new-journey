@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { defaultWhatsappUrl, siteConfig, whatsappUrl } from "@/lib/site-config";
 import { Icon } from "./Icons";
 
@@ -14,6 +14,27 @@ const nav = [
   ["/sobre", "Sobre nós"],
   ["/qa", "Qualidade"],
 ];
+
+function ScrollToTopOnRouteChange() {
+  const pathname = usePathname();
+  const previousPathname = useRef(pathname);
+
+  useEffect(() => {
+    if (previousPathname.current === pathname) return;
+    previousPathname.current = pathname;
+
+    // Cross-page links with a hash keep the browser's native anchor behavior.
+    // Every other route change starts at the top, even when history restoration
+    // or a persistent App Router layout would otherwise retain the old offset.
+    const frame = window.requestAnimationFrame(() => {
+      if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname]);
+
+  return null;
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -55,5 +76,5 @@ export function WhatsAppFloat() {
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isSubpage = pathname !== "/";
-  return <><Header/><main id="conteudo" className={isSubpage ? "subpage-main" : undefined} tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
+  return <><ScrollToTopOnRouteChange/><Header/><main id="conteudo" className={isSubpage ? "subpage-main" : undefined} tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
 }
