@@ -5,18 +5,6 @@ import { SiteShell } from "@/components/SiteShell";
 
 export default function Sobre(){
   return <SiteShell>
-    <nav className="about-local-nav" aria-label="Navegação da página Sobre">
-      <div className="about-local-nav-inner">
-        <strong>Sobre a New Journey</strong>
-        <div className="about-local-links">
-          <a href="#papel">Nosso papel</a>
-          <a href="#valores">Valores</a>
-          <a href="#modelo">Como funciona</a>
-        </div>
-        <Link className="btn btn-dark about-local-cta" href="/agendamento">Falar conosco <Icon name="arrow"/></Link>
-      </div>
-    </nav>
-
     <section className="page-hero about-hero">
       <div className="about-hero-inner">
         <span className="kicker kicker-light">SOBRE A NEW JOURNEY</span>
