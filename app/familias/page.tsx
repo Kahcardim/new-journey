@@ -4,10 +4,10 @@ import { Icon } from "@/components/Icons";
 import { SiteShell } from "@/components/SiteShell";
 
 const services = [
-  ["Antes da decisão", "Ajudamos a organizar o que está acontecendo, reconhecer riscos e compreender alternativas."],
-  ["Durante a escolha", "Explicamos critérios, comparamos opções e apoiamos a família na conversa com os serviços."],
-  ["Após o encaminhamento", "Mantemos o contato para orientar dúvidas, limites e a participação saudável da família."],
-  ["Quando há recusa", "Acolhemos a angústia e ajudamos a evitar ameaças, discussões improdutivas ou decisões precipitadas."],
+  ["Antes da decisão", "Ajudamos a organizar o que está acontecendo, reconhecer riscos e compreender alternativas.", "Quero organizar a situação", "antes-da-decisao"],
+  ["Durante a escolha", "Explicamos critérios, comparamos opções e apoiamos a família na conversa com os serviços.", "Quero comparar caminhos", "durante-a-escolha"],
+  ["Após o encaminhamento", "Mantemos o contato para orientar dúvidas, limites e a participação saudável da família.", "Preciso de apoio nesta etapa", "apos-encaminhamento"],
+  ["Quando há recusa", "Acolhemos a angústia e ajudamos a evitar ameaças, discussões improdutivas ou decisões precipitadas.", "Quero orientação sobre a recusa", "quando-ha-recusa"],
 ];
 
 export default function Familias() {
@@ -28,19 +28,25 @@ export default function Familias() {
         </div>
       </section>
 
-      <section className="section-pad content-page family-content">
-        <div className="section-heading family-section-heading">
-          <span className="kicker">COMO APOIAMOS</span>
-          <h2>Orientação que acompanha a jornada.</h2>
-          <p>Um processo simples, objetivo e humano para que a família saiba o que observar, perguntar e decidir em cada etapa.</p>
+      <section className="priority-panel family-priority-panel" aria-labelledby="apoio-familia-titulo">
+        <div className="priority-panel-head">
+          <div><span className="kicker">COMO PODEMOS AJUDAR AGORA</span><h2 id="apoio-familia-titulo">Escolha o momento que mais se parece com o seu.</h2></div>
+          <p>Os caminhos principais ficam logo no início para você não precisar procurar a informação mais importante no fim da página.</p>
         </div>
-        <div className="service-grid family-service-grid">{services.map(([title,text],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-        <div className="priority-panel-actions family-inline-cta"><Link className="btn btn-dark" href="/agendamento">Quero orientação para minha família <Icon name="arrow"/></Link></div>
+        <div className="priority-grid family-action-grid">
+          {services.map(([title,text,cta,stage],i)=><article className="action-card" key={title}>
+            <span>0{i+1}</span><h3>{title}</h3><p>{text}</p>
+            <Link className="card-cta" href={`/agendamento?origem=familias&etapa=${stage}`}>{cta} <Icon name="arrow"/></Link>
+          </article>)}
+        </div>
+      </section>
+
+      <section className="section-pad content-page family-content">
         <section className="do-dont">
           <div><h2>O que pode ajudar</h2><ul><li><Icon name="check"/> Escolher um momento mais seguro para conversar</li><li><Icon name="check"/> Falar sobre fatos e consequências, sem humilhar</li><li><Icon name="check"/> Definir limites possíveis de manter</li><li><Icon name="check"/> Buscar apoio para a própria família</li></ul></div>
           <div><h2>O que costuma piorar</h2><ul><li>× Discutir durante intoxicação ou crise</li><li>× Fazer ameaças que não serão cumpridas</li><li>× Esconder todas as consequências do uso</li><li>× Tentar controlar tudo sem ajuda</li></ul></div>
         </section>
-        <div className="warm-callout"><span className="kicker">SEM CULPA, SEM PROMESSAS FÁCEIS</span><h2>Você pode oferecer ajuda sem assumir sozinho a responsabilidade pela mudança.</h2><p>Recuperação é um processo. Acolhimento e limites podem coexistir.</p></div>
+        <div className="warm-callout"><span className="kicker">SEM CULPA, SEM PROMESSAS FÁCEIS</span><h2>Você pode oferecer ajuda sem assumir sozinho a responsabilidade pela mudança.</h2><p>Recuperação é um processo. Acolhimento e limites podem coexistir.</p><Link className="btn btn-dark" href="/agendamento">Falar com a New Journey <Icon name="arrow"/></Link></div>
       </section>
     </SiteShell>
   );
