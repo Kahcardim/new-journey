@@ -1,0 +1,29 @@
+.family-mobile-hero{overflow:hidden}
+.family-mobile-hero>div:first-child{position:relative;z-index:2}
+.family-mobile-hero .family-page-photo{background-position:center 35%;min-height:520px}
+
+@media (max-width: 900px){
+  .family-mobile-hero.split-hero{grid-template-columns:minmax(0,1.08fr) minmax(230px,.92fr);min-height:520px;align-items:stretch}
+  .family-mobile-hero>div:first-child{padding:62px 30px}
+  .family-mobile-hero h1{font-size:clamp(2.35rem,6vw,4rem);line-height:1.02}
+  .family-mobile-hero p{font-size:.94rem;line-height:1.68}
+  .family-mobile-hero .family-page-photo{min-height:520px;background-position:58% center}
+}
+
+@media (max-width: 640px){
+  .family-mobile-hero.split-hero{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(138px,.75fr)!important;min-height:455px;background:linear-gradient(90deg,var(--cream) 0%,var(--cream) 62%,#dceae4 62%,#dceae4 100%)}
+  .family-mobile-hero>div:first-child{padding:38px 18px 40px 22px!important;align-self:center}
+  .family-mobile-hero .kicker{font-size:.55rem;letter-spacing:.14em}
+  .family-mobile-hero h1{font-size:clamp(2rem,9vw,2.85rem)!important;line-height:.98;margin:14px 0 16px;letter-spacing:-.045em}
+  .family-mobile-hero p{font-size:.78rem;line-height:1.55;margin:0 0 20px;max-width:28rem}
+  .family-mobile-hero .btn{min-height:44px;padding:10px 13px;gap:9px;font-size:.72rem;white-space:normal;text-align:left}
+  .family-mobile-hero .family-page-photo{min-height:455px!important;height:100%;background-position:62% center;background-size:cover;box-shadow:inset 18px 0 28px rgba(247,244,236,.12)}
+}
+
+@media (max-width: 430px){
+  .family-mobile-hero.split-hero{grid-template-columns:minmax(0,1.42fr) minmax(112px,.58fr)!important;min-height:430px}
+  .family-mobile-hero>div:first-child{padding:32px 14px 34px 18px!important}
+  .family-mobile-hero h1{font-size:clamp(1.78rem,9.2vw,2.35rem)!important}
+  .family-mobile-hero p{font-size:.72rem;line-height:1.5}
+  .family-mobile-hero .family-page-photo{min-height:430px!important;background-position:64% center}
+}
