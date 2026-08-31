@@ -31,8 +31,9 @@ export default function Familias() {
         <div className="section-heading family-section-heading">
           <span className="kicker">COMO APOIAMOS</span>
           <h2>Orientação que acompanha a jornada.</h2>
+          <p>Um processo simples, objetivo e humano para que a família saiba o que observar, perguntar e decidir em cada etapa.</p>
         </div>
-        <div className="service-grid">{services.map(([title,text],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+        <div className="service-grid family-service-grid">{services.map(([title,text],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
         <section className="do-dont">
           <div><h2>O que pode ajudar</h2><ul><li><Icon name="check"/> Escolher um momento mais seguro para conversar</li><li><Icon name="check"/> Falar sobre fatos e consequências, sem humilhar</li><li><Icon name="check"/> Definir limites possíveis de manter</li><li><Icon name="check"/> Buscar apoio para a própria família</li></ul></div>
           <div><h2>O que costuma piorar</h2><ul><li>× Discutir durante intoxicação ou crise</li><li>× Fazer ameaças que não serão cumpridas</li><li>× Esconder todas as consequências do uso</li><li>× Tentar controlar tudo sem ajuda</li></ul></div>
