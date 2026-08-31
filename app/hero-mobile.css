@@ -1,21 +1,60 @@
-/* Home hero: dedicated mobile artwork keeps the same scene as desktop without destructive cropping. */
-@media (max-width: 700px){
-  .home-hero{min-height:760px;align-items:flex-start}
-  .home-hero .hero-art{background-image:url('/new-journey-hero-mobile.webp');background-position:center 48%;background-size:cover}
-  .home-hero .hero-wash{background:linear-gradient(180deg,rgba(7,40,38,.90) 0%,rgba(7,40,38,.72) 38%,rgba(7,40,38,.44) 67%,rgba(7,40,38,.30) 100%)}
-  .home-hero .hero-inner{width:auto;margin:0;padding:64px 22px 38px;max-width:620px}
-  .home-hero .hero-inner h1{font-size:clamp(2.65rem,12vw,4.15rem);line-height:.98;margin:16px 0 20px;max-width:12ch}
-  .home-hero .hero-inner>p{font-size:.94rem;line-height:1.62;max-width:34rem}
-  .home-hero .hero-buttons{display:grid;grid-template-columns:1fr;max-width:330px;margin-top:25px}
-  .home-hero .hero-buttons .btn{width:100%}
-  .home-hero .hero-trust{gap:13px;flex-wrap:wrap;margin-top:30px;font-size:.68rem;max-width:360px}
+/* Hero mobile dedicado: mantém a mesma linguagem visual do desktop sem cortar o sujeito e a placa. */
+@media (max-width:700px){
+  .home-hero{
+    min-height:760px;
+    align-items:flex-start;
+    border-bottom:1px solid rgba(20,59,58,.08)
+  }
+  .home-hero .hero-art{
+    background-image:url('/new-journey-hero-mobile.webp');
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat
+  }
+  .home-hero .hero-wash{
+    background:linear-gradient(180deg,rgba(7,40,38,.88) 0%,rgba(7,40,38,.72) 34%,rgba(7,40,38,.38) 62%,rgba(7,40,38,.16) 100%)
+  }
+  .home-hero .hero-inner{
+    width:100%;
+    margin:0;
+    padding:52px 20px 34px;
+    max-width:620px
+  }
+  .home-hero .hero-inner h1{
+    font-size:clamp(2.45rem,11.2vw,3.85rem);
+    line-height:.99;
+    margin:15px 0 18px;
+    max-width:11.5ch
+  }
+  .home-hero .hero-inner>p{
+    max-width:32rem;
+    font-size:.91rem;
+    line-height:1.62
+  }
+  .home-hero .hero-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:min(100%,320px);
+    margin-top:24px
+  }
+  .home-hero .hero-buttons .btn{width:100%;justify-content:space-between}
+  .home-hero .hero-trust{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px 14px;
+    width:min(100%,355px);
+    margin-top:24px;
+    font-size:.67rem
+  }
 }
 
-@media (max-width: 430px){
+@media (max-width:430px){
   .home-hero{min-height:720px}
-  .home-hero .hero-art{background-position:center 52%}
-  .home-hero .hero-inner{padding:48px 18px 28px}
-  .home-hero .hero-inner h1{font-size:clamp(2.35rem,12vw,3.35rem)}
+  .home-hero .hero-art{background-position:center 48%}
+  .home-hero .hero-wash{background:linear-gradient(180deg,rgba(7,40,38,.91) 0%,rgba(7,40,38,.72) 38%,rgba(7,40,38,.31) 67%,rgba(7,40,38,.12) 100%)}
+  .home-hero .hero-inner{padding:42px 18px 28px}
+  .home-hero .hero-inner h1{font-size:clamp(2.28rem,11.4vw,3.15rem)}
   .home-hero .hero-inner>p{font-size:.86rem;line-height:1.58}
-  .home-hero .hero-trust{margin-top:22px}
+  .home-hero .hero-trust{grid-template-columns:1fr 1fr;margin-top:20px}
 }
