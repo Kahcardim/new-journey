@@ -15,19 +15,6 @@ const nav = [
   ["/qa", "Qualidade"],
 ];
 
-const pageLabels: Record<string,string> = {
-  "/tratamentos":"Tratamentos",
-  "/familias":"Para famílias",
-  "/clinicas":"Clínicas parceiras",
-  "/sobre":"Sobre a New Journey",
-  "/qa":"Qualidade",
-  "/alcool":"Álcool",
-  "/drogas":"Outras drogas",
-  "/dependencia-quimica":"Dependência química",
-  "/perguntas-frequentes":"Perguntas frequentes",
-  "/privacidade":"Privacidade e LGPD",
-};
-
 export function Header() {
   const [open, setOpen] = useState(false);
   return <>
@@ -44,23 +31,6 @@ export function Header() {
       </nav>
     </header>
   </>;
-}
-
-function SubpageBar({pathname}:{pathname:string}) {
-  if(pathname === "/" || pathname.startsWith("/agendamento")) return null;
-  const title = pageLabels[pathname] || "New Journey";
-  return <nav className="subpage-bar" aria-label="Navegação da seção">
-    <div className="subpage-bar-inner">
-      <strong className="subpage-bar-title">{title}</strong>
-      <div className="subpage-bar-links">
-        <Link href="/tratamentos">Tratamentos</Link>
-        <Link href="/familias">Famílias</Link>
-        <Link href="/clinicas">Clínicas parceiras</Link>
-        <Link href="/sobre">Sobre nós</Link>
-      </div>
-      <Link className="btn btn-dark subpage-bar-cta" href="/agendamento">Falar conosco <Icon name="arrow"/></Link>
-    </div>
-  </nav>;
 }
 
 export function Footer() {
@@ -85,5 +55,5 @@ export function WhatsAppFloat() {
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isSubpage = pathname !== "/";
-  return <><Header/><SubpageBar pathname={pathname}/><main id="conteudo" className={isSubpage ? "subpage-main" : undefined} tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
+  return <><Header/><main id="conteudo" className={isSubpage ? "subpage-main" : undefined} tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
 }
