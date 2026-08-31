@@ -4,6 +4,7 @@ import "./globals.css";
 import "./github-pages.css";
 import "./editorial.css";
 import "./hero-mobile.css";
+import "./accessibility.css";
 import { siteConfig } from "@/lib/site-config";
 
 const faviconUrl = `${siteConfig.siteUrl.replace(/\/$/, "")}/favicon.svg`;
