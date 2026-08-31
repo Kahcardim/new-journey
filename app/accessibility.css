@@ -4,39 +4,30 @@ body{min-width:0}
 :focus-visible{outline:3px solid #f2a900;outline-offset:3px}
 main:focus{outline:none}
 
-/* Movimento reduzido */
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto!important}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
-  .btn:hover,.path-grid>a:hover{transform:none!important}
-}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}.btn:hover,.path-grid>a:hover{transform:none!important}}
+@media (prefers-contrast:more){:root{--ink:#082625;--deep:#031f1e;--teal:#07524d;--teal2:#0a625b;--muted:#364a46;--line:#8ea19c}.btn,.nav-schedule,.path-grid>a,.service-grid article,.treatment-grid article,.values-grid article,input,select,textarea{border-width:2px!important}.hero-wash{background:linear-gradient(90deg,rgba(2,25,24,.97) 0%,rgba(2,25,24,.82) 52%,rgba(2,25,24,.18) 100%)!important}}
+@media (forced-colors:active){*{forced-color-adjust:auto}.hero-art,.family-photo,.family-page-photo{background-image:none!important}.hero-wash{background:Canvas!important;opacity:.82}.btn,.nav-schedule,.whatsapp-float,.path-grid>a,.service-grid article,.treatment-grid article,.values-grid article{border:1px solid ButtonText!important}.kicker,.text-link,.journey-list article>span{color:LinkText!important}}
+@media (prefers-reduced-transparency:reduce){.site-header{backdrop-filter:none!important;background:#fff!important}.hero-wash{opacity:1!important}}
+@media (pointer:coarse){button,.btn,.main-nav a,.footer-main a{min-height:44px}}
 
-/* Contraste aumentado sem trocar o design-base da New Journey */
-@media (prefers-contrast:more){
-  :root{--ink:#082625;--deep:#031f1e;--teal:#07524d;--teal2:#0a625b;--muted:#364a46;--line:#8ea19c}
-  .btn,.nav-schedule,.path-grid>a,.service-grid article,.treatment-grid article,.values-grid article,input,select,textarea{border-width:2px!important}
-  .hero-wash{background:linear-gradient(90deg,rgba(2,25,24,.97) 0%,rgba(2,25,24,.82) 52%,rgba(2,25,24,.18) 100%)!important}
-}
+/* Sistema global das subpáginas */
+.subpage-bar{position:sticky;top:78px;z-index:39;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.subpage-bar-inner{width:min(1280px,calc(100% - 40px));min-height:60px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px}
+.subpage-bar-title{font:600 1rem 'Newsreader';color:var(--ink);white-space:nowrap}
+.subpage-bar-links{display:flex;justify-content:center;gap:22px;font-size:.76rem;font-weight:700;color:var(--muted)}
+.subpage-bar-links a:hover{color:var(--teal)}
+.subpage-bar-cta{min-height:40px;padding:9px 15px;gap:9px}
 
-/* Windows High Contrast / cores forçadas */
-@media (forced-colors:active){
-  *{forced-color-adjust:auto}
-  .hero-art,.family-photo,.family-page-photo{background-image:none!important}
-  .hero-wash{background:Canvas!important;opacity:.82}
-  .btn,.nav-schedule,.whatsapp-float,.path-grid>a,.service-grid article,.treatment-grid article,.values-grid article{border:1px solid ButtonText!important}
-  .kicker,.text-link,.journey-list article>span{color:LinkText!important}
-}
+.subpage-main .page-hero{min-height:0;padding:clamp(56px,6vw,86px) 24px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.subpage-main .page-hero h1{max-width:17ch;margin:16px auto 20px;font-size:clamp(2.9rem,5.4vw,5rem);line-height:1.02}
+.subpage-main .page-hero p{max-width:780px;margin:0 auto;font-size:1rem;line-height:1.72}
+.subpage-main .page-hero.compact{padding-top:52px;padding-bottom:52px}
+.subpage-main .section-pad.content-page,.subpage-main .section-pad.policy,.subpage-main .section-pad.editorial{width:min(1180px,calc(100% - 40px));margin-inline:auto;padding-top:64px;padding-bottom:72px}
+.subpage-main .section-heading{max-width:780px;margin-bottom:34px}
+.subpage-main .section-heading h2{max-width:18ch;margin-left:auto;margin-right:auto}
+.subpage-main .center-cta{padding:52px 18px 22px}
+.subpage-main .values-grid,.subpage-main .service-grid,.subpage-main .treatment-grid{gap:16px}
+.subpage-main .values-grid article,.subpage-main .service-grid article,.subpage-main .treatment-grid article{border-radius:20px;box-shadow:0 12px 32px rgba(10,52,49,.055)}
 
-/* Transparência reduzida, quando suportada */
-@media (prefers-reduced-transparency:reduce){
-  .site-header{backdrop-filter:none!important;background:#fff!important}
-  .hero-wash{opacity:1!important}
-}
-
-/* Alvos confortáveis em telas touch */
-@media (pointer:coarse){
-  button,.btn,.main-nav a,.footer-main a{min-height:44px}
-}
-
-/* Não aplicamos modo escuro automático: a preferência de cor do SO não deve descaracterizar a marca.
-   Usuários com necessidade de contraste continuam cobertos por prefers-contrast e forced-colors. */
+@media (max-width:900px){.subpage-bar-inner{grid-template-columns:1fr auto;gap:14px;min-height:56px}.subpage-bar-links{display:none}.subpage-main .page-hero{padding:50px 20px}.subpage-main .section-pad.content-page,.subpage-main .section-pad.policy,.subpage-main .section-pad.editorial{width:min(100% - 30px,900px);padding-top:50px;padding-bottom:60px}}
+@media (max-width:640px){.subpage-bar{top:70px}.subpage-bar-inner{width:calc(100% - 24px);min-height:54px}.subpage-bar-title{font-size:.9rem;overflow:hidden;text-overflow:ellipsis}.subpage-bar-cta{min-height:39px;padding:8px 11px;font-size:.7rem}.subpage-main .page-hero{padding:44px 18px}.subpage-main .page-hero h1{font-size:clamp(2.4rem,10.5vw,3.5rem);max-width:12ch}.subpage-main .page-hero p{font-size:.92rem;line-height:1.62}.subpage-main .section-pad.content-page,.subpage-main .section-pad.policy,.subpage-main .section-pad.editorial{width:calc(100% - 24px);padding-top:42px;padding-bottom:50px}.subpage-main .section-heading{margin-bottom:26px}}
