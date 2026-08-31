@@ -1,29 +1,32 @@
-.family-mobile-hero{overflow:hidden}
-.family-mobile-hero>div:first-child{position:relative;z-index:2}
-.family-mobile-hero .family-page-photo{background-position:center 35%;min-height:520px}
+/* Family page visual system */
+.family-mobile-hero{overflow:hidden;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:clamp(32px,5vw,76px);align-items:center;min-height:auto;padding:clamp(42px,5vw,74px) max(4vw,24px);background:linear-gradient(135deg,#f7f4ec 0%,#f3f7f3 100%)}
+.family-mobile-hero>div:first-child{position:relative;z-index:2;padding:clamp(24px,3vw,46px) 0;max-width:680px;margin-left:auto}
+.family-mobile-hero h1{font-size:clamp(3.1rem,5vw,5.35rem);line-height:.98;max-width:10ch}
+.family-mobile-hero p{font-size:1rem;line-height:1.75;max-width:610px}
+.family-mobile-hero .family-page-photo{min-height:590px;height:100%;border-radius:20px;background-position:58% center;background-size:cover;box-shadow:0 28px 70px rgba(10,52,49,.16);position:relative;overflow:hidden}
+.family-mobile-hero .family-page-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,43,40,.18) 100%);pointer-events:none}
 
-@media (max-width: 900px){
-  .family-mobile-hero.split-hero{grid-template-columns:minmax(0,1.08fr) minmax(230px,.92fr);min-height:520px;align-items:stretch}
-  .family-mobile-hero>div:first-child{padding:62px 30px}
-  .family-mobile-hero h1{font-size:clamp(2.35rem,6vw,4rem);line-height:1.02}
-  .family-mobile-hero p{font-size:.94rem;line-height:1.68}
-  .family-mobile-hero .family-page-photo{min-height:520px;background-position:58% center}
+@media (max-width: 980px){
+  .family-mobile-hero{grid-template-columns:minmax(0,1fr) minmax(340px,.9fr);gap:32px;padding:42px 28px}
+  .family-mobile-hero>div:first-child{margin-left:0}
+  .family-mobile-hero h1{font-size:clamp(2.7rem,6vw,4rem)}
+  .family-mobile-hero .family-page-photo{min-height:500px}
 }
 
-@media (max-width: 640px){
-  .family-mobile-hero.split-hero{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(138px,.75fr)!important;min-height:455px;background:linear-gradient(90deg,var(--cream) 0%,var(--cream) 62%,#dceae4 62%,#dceae4 100%)}
-  .family-mobile-hero>div:first-child{padding:38px 18px 40px 22px!important;align-self:center}
-  .family-mobile-hero .kicker{font-size:.55rem;letter-spacing:.14em}
-  .family-mobile-hero h1{font-size:clamp(2rem,9vw,2.85rem)!important;line-height:.98;margin:14px 0 16px;letter-spacing:-.045em}
-  .family-mobile-hero p{font-size:.78rem;line-height:1.55;margin:0 0 20px;max-width:28rem}
-  .family-mobile-hero .btn{min-height:44px;padding:10px 13px;gap:9px;font-size:.72rem;white-space:normal;text-align:left}
-  .family-mobile-hero .family-page-photo{min-height:455px!important;height:100%;background-position:62% center;background-size:cover;box-shadow:inset 18px 0 28px rgba(247,244,236,.12)}
+@media (max-width: 720px){
+  .family-mobile-hero{display:grid!important;grid-template-columns:1fr!important;gap:22px;padding:38px 20px 24px;background:var(--cream)}
+  .family-mobile-hero>div:first-child{padding:0!important;max-width:none}
+  .family-mobile-hero .kicker{font-size:.58rem;letter-spacing:.16em}
+  .family-mobile-hero h1{font-size:clamp(2.45rem,10vw,3.3rem)!important;line-height:.98;margin:14px 0 17px;max-width:11ch}
+  .family-mobile-hero p{font-size:.9rem;line-height:1.65;margin-bottom:22px;max-width:36rem}
+  .family-mobile-hero .btn{min-height:48px;padding:11px 15px;font-size:.77rem}
+  .family-mobile-hero .family-page-photo{min-height:230px!important;height:230px;border-radius:14px;background-position:center 40%;box-shadow:0 16px 36px rgba(10,52,49,.11)}
 }
 
-@media (max-width: 430px){
-  .family-mobile-hero.split-hero{grid-template-columns:minmax(0,1.42fr) minmax(112px,.58fr)!important;min-height:430px}
-  .family-mobile-hero>div:first-child{padding:32px 14px 34px 18px!important}
-  .family-mobile-hero h1{font-size:clamp(1.78rem,9.2vw,2.35rem)!important}
-  .family-mobile-hero p{font-size:.72rem;line-height:1.5}
-  .family-mobile-hero .family-page-photo{min-height:430px!important;background-position:64% center}
+@media (max-width: 480px){
+  .family-mobile-hero{padding:34px 18px 38px}
+  .family-mobile-hero h1{font-size:clamp(2.25rem,11vw,2.95rem)!important}
+  .family-mobile-hero p{font-size:.86rem;line-height:1.6}
+  .family-mobile-hero .family-page-photo{display:none}
+  .family-mobile-hero .btn{width:100%;justify-content:space-between}
 }
