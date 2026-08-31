@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { defaultWhatsappUrl, siteConfig, whatsappUrl } from "@/lib/site-config";
 import { Icon } from "./Icons";
 
@@ -14,32 +14,16 @@ const nav = [
   ["/qa", "Qualidade"],
 ];
 
-export function AccessibilityBar() {
-  const [contrast, setContrast] = useState(false);
-  const [fontScale, setFontScale] = useState(1);
-  useEffect(() => {
-    document.documentElement.dataset.contrast = contrast ? "high" : "normal";
-    document.documentElement.style.setProperty("--font-scale", String(fontScale));
-  }, [contrast, fontScale]);
-  return <div className="a11y-bar" aria-label="Ferramentas de acessibilidade">
-    <span>Acessibilidade</span>
-    <button onClick={() => setFontScale(Math.min(1.2, fontScale + .1))} aria-label="Aumentar texto"><Icon name="text" size={15}/> A+</button>
-    <button onClick={() => setFontScale(Math.max(.9, fontScale - .1))} aria-label="Diminuir texto">A−</button>
-    <button onClick={() => setContrast(!contrast)} aria-pressed={contrast}><Icon name="eye" size={15}/> Alto contraste</button>
-  </div>;
-}
-
 export function Header() {
   const [open, setOpen] = useState(false);
   return <>
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <AccessibilityBar />
     <header className="site-header">
       <Link className="brand" href="/" aria-label="New Journey, página inicial">
         <span className="brand-mark" aria-hidden="true">NJ</span>
         <span><strong>NEW JOURNEY</strong><small>{siteConfig.tagline}</small></span>
       </Link>
-      <button className="mobile-menu" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="main-nav"><Icon name={open ? "close" : "menu"} size={25}/><span className="sr-only">Menu</span></button>
+      <button className="mobile-menu" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="main-nav" aria-label={open ? "Fechar menu" : "Abrir menu"}><Icon name={open ? "close" : "menu"} size={25}/><span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span></button>
       <nav id="main-nav" className={open ? "main-nav is-open" : "main-nav"} aria-label="Navegação principal">
         {nav.map(([href,label]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}
         <Link className="nav-schedule" href="/agendamento">Agendar conversa</Link>
@@ -68,5 +52,5 @@ export function WhatsAppFloat() {
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
-  return <><Header/><main id="conteudo">{children}</main><Footer/><WhatsAppFloat/></>;
+  return <><Header/><main id="conteudo" tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
 }
