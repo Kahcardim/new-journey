@@ -4,6 +4,13 @@ import { SiteShell } from "@/components/SiteShell";
 
 const criteria=["Perfil do paciente e público atendido","Reputação e referências verificáveis","Localização e acesso da família","Disponibilidade real de acolhimento","Estrutura e equipe informadas","Viabilidade financeira da família"];
 
+const steps = [
+  ["01","Reunião inicial","Alinhamento de público, capacidade, processo e responsabilidades.","Quero apresentar minha clínica"],
+  ["02","Homologação","Coleta de dados, critérios mínimos e validação documental.","Quero entender os critérios"],
+  ["03","Contrato e cadastro","Regras de rastreabilidade, conversão e remuneração transparentes.","Quero conhecer o modelo"],
+  ["04","Projeto piloto","Acompanhamento dos primeiros encaminhamentos e melhoria contínua.","Quero iniciar uma conversa"],
+];
+
 export default function Clinicas(){return <SiteShell>
   <section className="page-hero">
     <span className="kicker kicker-light">REDE PARCEIRA</span>
@@ -15,13 +22,10 @@ export default function Clinicas(){return <SiteShell>
     </div>
   </section>
 
-  <section id="como-funciona" className="priority-panel" aria-labelledby="parceria-titulo">
-    <div className="priority-panel-head"><div><span className="kicker">COMO FUNCIONA</span><h2 id="parceria-titulo">Uma parceria com processo claro.</h2></div><p>O foco é compatibilidade entre perfil, estrutura, disponibilidade e necessidade da família — não apenas geração de volume.</p></div>
-    <div className="priority-grid">
-      <article><span>01</span><h3>Reunião inicial</h3><p>Alinhamento de público, capacidade, processo e responsabilidades.</p></article>
-      <article><span>02</span><h3>Homologação</h3><p>Coleta de dados, critérios mínimos e validação documental.</p></article>
-      <article><span>03</span><h3>Contrato e cadastro</h3><p>Regras de rastreabilidade, conversão e remuneração transparentes.</p></article>
-      <article><span>04</span><h3>Projeto piloto</h3><p>Acompanhamento dos primeiros encaminhamentos e melhoria contínua.</p></article>
+  <section id="como-funciona" className="priority-panel priority-panel-primary" aria-labelledby="parceria-titulo">
+    <div className="priority-panel-head"><div><span className="kicker">COMO FUNCIONA</span><h2 id="parceria-titulo">Uma parceria com processo claro.</h2></div><p>Estas são as etapas mais importantes para uma clínica que quer trabalhar com a New Journey. Você pode iniciar a conversa a partir de qualquer uma delas.</p></div>
+    <div className="priority-grid priority-grid-actionable">
+      {steps.map(([n,title,text,cta])=><article className="priority-action-card" key={title}><span>{n}</span><h3>{title}</h3><p>{text}</p><Link className="priority-card-cta" href="/agendamento">{cta} <Icon name="arrow"/></Link></article>)}
     </div>
     <div className="priority-panel-actions"><Link className="btn btn-dark" href="/agendamento">Agendar reunião de parceria <Icon name="arrow"/></Link></div>
   </section>
@@ -31,6 +35,5 @@ export default function Clinicas(){return <SiteShell>
     <div className="criteria-grid">{criteria.map((item,i)=><div key={item}><span>0{i+1}</span><p>{item}</p></div>)}</div>
     <div className="partner-status"><div><span className="kicker">CATÁLOGO EM PREPARAÇÃO</span><h2>Clínicas parceiras serão exibidas após homologação.</h2><p>O seletor da página inicial já está preparado para receber nome, região, público, estrutura, disponibilidade e diferenciais de cada parceira.</p></div><span className="status-pill">0 clínicas publicadas</span></div>
     <div className="legal-callout"><Icon name="shield"/><div><h3>Relação transparente</h3><p>O contrato de tratamento é realizado diretamente entre clínica e paciente ou família. A New Journey não interfere na decisão clínica e não garante internação, permanência ou resultado terapêutico.</p></div></div>
-    <div className="center-cta"><h2>Quer apresentar sua clínica?</h2><p>Agende uma reunião para conhecer o modelo de parceria e os critérios de homologação.</p><Link className="btn btn-dark" href="/agendamento">Agendar reunião de parceria <Icon name="arrow"/></Link></div>
   </section>
 </SiteShell>}
