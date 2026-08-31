@@ -1,0 +1,122 @@
+/* Acessibilidade adaptativa — respeita preferências expostas pelo navegador/SO. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 0;
+}
+
+/* Não bloqueia zoom do navegador e mantém foco consistente. */
+:focus-visible {
+  outline: 3px solid #f2a900;
+  outline-offset: 3px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Redução de movimento para usuários que solicitam menos animação. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:hover,
+  .path-grid > a:hover { transform: none !important; }
+}
+
+/* Contraste aumentado quando o sistema/navegador solicita. */
+@media (prefers-contrast: more) {
+  :root {
+    --ink: #082625;
+    --deep: #031f1e;
+    --teal: #07524d;
+    --teal2: #0a625b;
+    --muted: #364a46;
+    --line: #8ea19c;
+  }
+  a { text-decoration-thickness: .11em; text-underline-offset: .18em; }
+  .btn,
+  .nav-schedule,
+  .path-grid > a,
+  .service-grid article,
+  .treatment-grid article,
+  .values-grid article,
+  input, select, textarea { border-width: 2px !important; }
+  .hero-wash { background: linear-gradient(90deg, rgba(2,25,24,.97) 0%, rgba(2,25,24,.84) 55%, rgba(2,25,24,.24) 100%) !important; }
+}
+
+/* Windows High Contrast / cores forçadas. */
+@media (forced-colors: active) {
+  * { forced-color-adjust: auto; }
+  .hero-art,
+  .family-photo,
+  .family-page-photo { background-image: none !important; }
+  .hero-wash { background: Canvas !important; opacity: .8; }
+  .btn,
+  .nav-schedule,
+  .whatsapp-float,
+  .path-grid > a,
+  .service-grid article,
+  .treatment-grid article,
+  .values-grid article { border: 1px solid ButtonText !important; }
+  .kicker,
+  .text-link,
+  .journey-list article > span { color: LinkText !important; }
+}
+
+/* Preferência de esquema escuro: mantém a identidade New Journey sem inverter imagens. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0d1f1e;
+    --cream: #132725;
+    --pale: #17332f;
+    --ink: #edf6f3;
+    --muted: #bdcfca;
+    --line: #33504b;
+    --shadow: 0 18px 50px rgba(0,0,0,.28);
+  }
+  body { background: var(--paper); color: var(--ink); }
+  .site-header { background: rgba(13,31,30,.96); border-bottom-color: #29443f; }
+  .brand, .main-nav, .mobile-menu { color: var(--ink); }
+  .guided-search,
+  .family-feature,
+  .split-hero,
+  .warm-callout,
+  .about-statement,
+  .transparency,
+  .admission-compare > div,
+  .do-dont > div,
+  .partner-status { background: var(--cream); }
+  .path-grid > a,
+  .lead-form,
+  .criteria-grid > div,
+  .service-grid article,
+  .treatment-grid article,
+  .values-grid article { background: #112522; border-color: var(--line); }
+  input, select, textarea { background: #102522 !important; color: var(--ink) !important; border-color: #45645e !important; }
+  .family-photo blockquote { background: #122724; color: var(--ink); }
+  .skip-link { background: #fff; color: #111; }
+}
+
+/* Preferência por transparência reduzida quando suportada. */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header { backdrop-filter: none !important; background: var(--paper) !important; }
+  .hero-wash { opacity: 1 !important; }
+}
+
+/* Links e controles recebem alvo de toque confortável em dispositivos por toque. */
+@media (pointer: coarse) {
+  button,
+  .btn,
+  .main-nav a,
+  .footer-main a { min-height: 44px; }
+}
