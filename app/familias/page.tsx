@@ -11,6 +11,7 @@ const services = [
 ];
 
 export default function Familias() {
+  const assetBase = process.env.GITHUB_PAGES === "true" ? "/new-journey" : "";
   return (
     <SiteShell>
       <section className="family-mobile-hero" aria-labelledby="familia-titulo">
@@ -23,7 +24,7 @@ export default function Familias() {
           </div>
         </div>
         <div className="family-page-photo">
-          <img src="/new-journey-familia.webp" alt="Família em conversa acolhedora" />
+          <img src={`${assetBase}/new-journey-familia.webp`} alt="Família em conversa acolhedora" />
         </div>
       </section>
 
@@ -34,6 +35,7 @@ export default function Familias() {
           <p>Um processo simples, objetivo e humano para que a família saiba o que observar, perguntar e decidir em cada etapa.</p>
         </div>
         <div className="service-grid family-service-grid">{services.map(([title,text],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+        <div className="priority-panel-actions family-inline-cta"><Link className="btn btn-dark" href="/agendamento">Quero orientação para minha família <Icon name="arrow"/></Link></div>
         <section className="do-dont">
           <div><h2>O que pode ajudar</h2><ul><li><Icon name="check"/> Escolher um momento mais seguro para conversar</li><li><Icon name="check"/> Falar sobre fatos e consequências, sem humilhar</li><li><Icon name="check"/> Definir limites possíveis de manter</li><li><Icon name="check"/> Buscar apoio para a própria família</li></ul></div>
           <div><h2>O que costuma piorar</h2><ul><li>× Discutir durante intoxicação ou crise</li><li>× Fazer ameaças que não serão cumpridas</li><li>× Esconder todas as consequências do uso</li><li>× Tentar controlar tudo sem ajuda</li></ul></div>
