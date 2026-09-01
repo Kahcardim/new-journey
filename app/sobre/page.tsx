@@ -11,9 +11,8 @@ const pillars = [
 ];
 
 export default function Sobre(){return <SiteShell>
-  <SubpageIntro kicker="SOBRE A NEW JOURNEY" title="O que você encontra aqui?" description="Antes de contar nossa história, mostramos os compromissos que orientam cada atendimento." />
-
-  <PrimaryActionGrid id="pilares" kicker="NOSSO JEITO DE ATENDER" title="Quatro compromissos na prática." description="Escolha o ponto que mais importa para você agora." items={pillars} />
+  <SubpageIntro kicker="SOBRE A NEW JOURNEY" title="O que você encontra aqui?" />
+  <PrimaryActionGrid id="pilares" kicker="NOSSO JEITO DE ATENDER" title="Quatro compromissos na prática." note="Esses compromissos orientam a forma como acolhemos, explicamos possibilidades e acompanhamos cada encaminhamento." items={pillars} />
 
   <section className="section-pad content-page about-content">
     <div id="papel" className="about-statement about-section-anchor">
