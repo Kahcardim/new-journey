@@ -1,34 +1,34 @@
-/* Navegação por quadros: encaixa blocos principais durante a rolagem sem prender conteúdo longo. */
+/* Navegação por quadros: o snap só é ativado após interação real do usuário. */
 @media (min-width: 901px) and (pointer: fine) {
-  html {
+  html.scroll-snap-enabled {
     scroll-snap-type: y proximity;
     scroll-padding-top: 78px;
   }
 
-  main > section,
-  main > .section-pad,
-  .site-footer {
+  html.scroll-snap-enabled main > section,
+  html.scroll-snap-enabled main > .section-pad,
+  html.scroll-snap-enabled .site-footer {
     scroll-snap-align: start;
     scroll-snap-stop: normal;
   }
 
-  .home-hero,
-  .page-intro,
-  .priority-panel,
-  .family-editorial,
-  .final-cta {
+  html.scroll-snap-enabled .home-hero,
+  html.scroll-snap-enabled .page-intro,
+  html.scroll-snap-enabled .priority-panel,
+  html.scroll-snap-enabled .family-editorial,
+  html.scroll-snap-enabled .final-cta {
     scroll-snap-stop: always;
   }
 }
 
 @media (max-width: 900px), (pointer: coarse) {
-  html {
+  html.scroll-snap-enabled {
     scroll-snap-type: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html.scroll-snap-enabled {
     scroll-snap-type: none !important;
   }
 }
