@@ -1,4 +1,5 @@
 "use client";
+import "./agendamento.css";
 import { FormEvent, useMemo, useState } from "react";
 import { Icon } from "@/components/Icons";
 import { SiteShell } from "@/components/SiteShell";
@@ -11,17 +12,22 @@ export default function Agendamento() {
   function update(name:string,value:string|boolean){setForm(v=>({...v,[name]:value}));}
   function submit(e:FormEvent){e.preventDefault(); if(!form.name||!form.city||!form.date||!form.time||!form.consent){setError("Preencha nome, cidade, data, horário e confirme o consentimento.");return;} setError(""); const msg=`Olá, gostaria de agendar uma conversa com a New Journey.\n\nNome: ${form.name}\nAjuda para: ${form.relation}\nCidade: ${form.city}\nIdade aproximada do paciente: ${form.age||"Não informada"}\nSubstância principal: ${form.substance}\nTempo de uso: ${form.duration||"Não informado"}\nPossibilidade de internação: ${form.admission}\nRisco imediato informado: ${form.risk}\nData preferida: ${form.date}\nHorário preferido: ${form.time}\nObservação: ${form.notes||"Sem observação"}`; window.open(whatsappUrl(msg),"_blank","noopener,noreferrer");}
   return <SiteShell>
-    <section className="page-hero compact">
-      <span className="kicker kicker-light">CONVERSA 24 HORAS</span>
-      <h1>Agende no horário que fizer sentido para você.</h1>
-      <p>Preencha apenas o essencial. O envio abre o WhatsApp com um resumo para o orientador entender o contexto antes da conversa.</p>
-      <div className="page-primary-actions">
+    <section className="schedule-hero">
+      <span className="kicker">CONVERSA 24 HORAS</span>
+      <h1>Agende uma conversa no seu horário.</h1>
+      <p>Preencha somente o essencial. O site prepara um resumo e abre o WhatsApp para que o orientador entenda o contexto antes da conversa.</p>
+      <div className="schedule-hero-actions">
         <a className="btn btn-mint" href="#formulario-agendamento">Preencher agendamento <Icon name="arrow"/></a>
         <a className="btn btn-outline-light" href="#orientacoes-agendamento">Ver orientações importantes</a>
       </div>
+      <div className="schedule-trust" aria-label="Informações do atendimento">
+        <span><Icon name="clock" size={17}/> Solicitações 24 horas</span>
+        <span><Icon name="shield" size={17}/> Dados não ficam armazenados no site</span>
+        <span><Icon name="message" size={17}/> Envio direto pelo WhatsApp</span>
+      </div>
     </section>
 
-    <section id="formulario-agendamento" className="schedule-layout section-pad">
+    <section id="formulario-agendamento" className="schedule-content">
       <aside id="orientacoes-agendamento">
         <div className="info-card"><Icon name="clock" size={26}/><h2>Disponível todos os dias</h2><p>Escolha qualquer data e horário. A solicitação é enviada diretamente pelo WhatsApp.</p></div>
         <div className="emergency-card"><strong>Existe risco imediato?</strong><p>Em overdose, perda de consciência, convulsão, agressão, risco de suicídio ou ameaça à vida, não aguarde reunião: ligue para o SAMU 192 ou Polícia 190.</p></div>
