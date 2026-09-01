@@ -13,9 +13,8 @@ const steps = [
 ];
 
 export default function Clinicas(){return <SiteShell>
-  <SubpageIntro kicker="CLÍNICAS PARCEIRAS" title="Como funciona uma parceria com a New Journey?" description="Veja primeiro as etapas da parceria. Os critérios e detalhes operacionais ficam logo depois." />
-
-  <PrimaryActionGrid id="como-funciona" kicker="PROCESSO DE PARCERIA" title="Quatro etapas, com regras claras." description="A clínica pode iniciar a conversa a partir da etapa em que está hoje." items={steps} />
+  <SubpageIntro kicker="CLÍNICAS PARCEIRAS" title="Como funciona uma parceria com a New Journey?" />
+  <PrimaryActionGrid id="como-funciona" kicker="PROCESSO DE PARCERIA" title="Quatro etapas, com regras claras." note="A clínica pode iniciar a conversa a partir da etapa em que está hoje." items={steps} />
 
   <section className="section-pad content-page">
     <div className="section-heading"><span className="kicker">POR QUE TRABALHAMOS ASSIM</span><h2>Parcerias baseadas em critérios, não apenas em vagas.</h2><p>A New Journey aproxima famílias com contexto e intenção real de clínicas previamente avaliadas, com regras transparentes e acompanhamento do encaminhamento.</p></div>
