@@ -15,7 +15,7 @@ const services = [
 export default function Familias() {
   const assetBase = process.env.GITHUB_PAGES === "true" ? "/new-journey" : "";
   return <SiteShell>
-    <SubpageIntro kicker="PARA FAMÍLIAS" title="Em que momento sua família está agora?" description="Comece pelo cenário mais próximo do que você está vivendo. O conteúdo explicativo vem depois." />
+    <SubpageIntro kicker="PARA FAMÍLIAS" title="Em que momento sua família está agora?" />
 
     <PrimaryActionGrid id="apoio-familia" kicker="COMO PODEMOS AJUDAR" title="Escolha o ponto de partida." description="Os caminhos principais aparecem primeiro para facilitar a decisão e o contato." items={services} />
 
@@ -27,13 +27,7 @@ export default function Familias() {
         <Link className="btn btn-dark" href="/agendamento?origem=familias">Conversar com um orientador <Icon name="arrow"/></Link>
       </div>
       <figure className="family-editorial-photo">
-        <Image
-          src={`${assetBase}/new-journey-familia.webp`}
-          alt="Família em conversa acolhedora"
-          width={1440}
-          height={1086}
-          sizes="(max-width: 760px) calc(100vw - 32px), 560px"
-        />
+        <Image src={`${assetBase}/new-journey-familia.webp`} alt="Família em conversa acolhedora" width={1440} height={1086} sizes="(max-width: 760px) calc(100vw - 32px), 560px" />
       </figure>
     </section>
 
