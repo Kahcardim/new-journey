@@ -1,0 +1,34 @@
+/* Navegação por quadros: encaixa blocos principais durante a rolagem sem prender conteúdo longo. */
+@media (min-width: 901px) and (pointer: fine) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 78px;
+  }
+
+  main > section,
+  main > .section-pad,
+  .site-footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  .home-hero,
+  .page-intro,
+  .priority-panel,
+  .family-editorial,
+  .final-cta {
+    scroll-snap-stop: always;
+  }
+}
+
+@media (max-width: 900px), (pointer: coarse) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none !important;
+  }
+}
