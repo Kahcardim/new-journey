@@ -12,8 +12,7 @@ const paths = [
 
 export default function Tratamentos(){return <SiteShell>
   <SubpageIntro kicker="ENTENDER O TRATAMENTO" title="Qual caminho de cuidado faz sentido agora?" />
-
-  <PrimaryActionGrid id="caminhos" kicker="CAMINHOS DE CUIDADO" title="Escolha por onde começar." description="Os principais caminhos aparecem primeiro para que a decisão não fique escondida em textos longos." items={paths} />
+  <PrimaryActionGrid id="caminhos" kicker="CAMINHOS DE CUIDADO" title="Escolha por onde começar." note="Essas opções podem fazer parte de um plano individual. A conversa inicial ajuda a organizar qual delas vale investigar primeiro." items={paths} />
 
   <section className="section-pad content-page">
     <div className="section-heading"><span className="kicker">ENTENDA AS DIFERENÇAS</span><h2>Tratamento não é uma escolha única para todos.</h2><p>A necessidade deve ser avaliada por profissionais habilitados. Conhecer as possibilidades ajuda a família a fazer perguntas melhores e evitar decisões tomadas somente pelo medo.</p></div>
