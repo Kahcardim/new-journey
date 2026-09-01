@@ -11,7 +11,7 @@ const paths = [
 ];
 
 export default function Tratamentos(){return <SiteShell>
-  <SubpageIntro kicker="ENTENDER O TRATAMENTO" title="Qual caminho de cuidado faz sentido agora?" description="Comece pelas possibilidades. Depois, aprofunde os critérios e diferenças entre cada modalidade." />
+  <SubpageIntro kicker="ENTENDER O TRATAMENTO" title="Qual caminho de cuidado faz sentido agora?" />
 
   <PrimaryActionGrid id="caminhos" kicker="CAMINHOS DE CUIDADO" title="Escolha por onde começar." description="Os principais caminhos aparecem primeiro para que a decisão não fique escondida em textos longos." items={paths} />
 
