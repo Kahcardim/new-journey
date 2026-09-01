@@ -5,6 +5,7 @@ import "./github-pages.css";
 import "./editorial.css";
 import "./hero-mobile.css";
 import "./subpage-layout.css";
+import "./scroll-snap.css";
 import "./accessibility.css";
 import { siteConfig } from "@/lib/site-config";
 
