@@ -14,13 +14,17 @@ const nav = [
   ["/sobre", "Sobre nós"],
 ];
 
+function setScrollSnapEnabled(enabled: boolean) {
+  document.documentElement.classList.toggle("scroll-snap-enabled", enabled);
+}
+
 function scrollToDocumentTop() {
   window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
 }
 
-function ScrollToTopOnRouteChange() {
+function ScrollBehaviorManager() {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,28 +32,49 @@ function ScrollToTopOnRouteChange() {
       window.history.scrollRestoration = "manual";
     }
 
-    if (window.location.hash) return;
+    // Ao entrar em qualquer rota, o snap fica desligado para o navegador
+    // respeitar o topo da página em vez de saltar para o primeiro card.
+    setScrollSnapEnabled(false);
 
-    // GitHub Pages pode restaurar a posição após o primeiro paint em uma
-    // navegação estática. Resetamos no mount/pathname e novamente após os
-    // próximos paints para impedir que a posição da página anterior reapareça.
-    scrollToDocumentTop();
-    const frame1 = window.requestAnimationFrame(() => {
+    if (!window.location.hash) {
       scrollToDocumentTop();
-      const frame2 = window.requestAnimationFrame(scrollToDocumentTop);
-      window.setTimeout(scrollToDocumentTop, 80);
-      window.setTimeout(scrollToDocumentTop, 220);
-      return () => window.cancelAnimationFrame(frame2);
-    });
+      const frame1 = window.requestAnimationFrame(() => {
+        scrollToDocumentTop();
+        window.requestAnimationFrame(scrollToDocumentTop);
+      });
+      const timeout1 = window.setTimeout(scrollToDocumentTop, 80);
+      const timeout2 = window.setTimeout(scrollToDocumentTop, 220);
 
-    return () => window.cancelAnimationFrame(frame1);
+      const enableSnap = () => setScrollSnapEnabled(true);
+      const enableSnapFromKeyboard = (event: KeyboardEvent) => {
+        if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", " "].includes(event.key)) enableSnap();
+      };
+
+      // O snap só passa a existir depois de uma ação real de navegação do usuário.
+      window.addEventListener("wheel", enableSnap, { once: true, passive: true });
+      window.addEventListener("touchmove", enableSnap, { once: true, passive: true });
+      window.addEventListener("keydown", enableSnapFromKeyboard, { once: true });
+
+      return () => {
+        window.cancelAnimationFrame(frame1);
+        window.clearTimeout(timeout1);
+        window.clearTimeout(timeout2);
+        window.removeEventListener("wheel", enableSnap);
+        window.removeEventListener("touchmove", enableSnap);
+        window.removeEventListener("keydown", enableSnapFromKeyboard);
+      };
+    }
+
+    return () => setScrollSnapEnabled(false);
   }, [pathname]);
 
   return null;
 }
 
 function resetBeforeNavigation() {
-  if (typeof window !== "undefined") scrollToDocumentTop();
+  if (typeof window === "undefined") return;
+  setScrollSnapEnabled(false);
+  scrollToDocumentTop();
 }
 
 export function Header() {
@@ -97,5 +122,5 @@ export function WhatsAppFloat() {
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isSubpage = pathname !== "/";
-  return <><ScrollToTopOnRouteChange/><Header/><main id="conteudo" className={isSubpage ? "subpage-main" : undefined} tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
+  return <><ScrollBehaviorManager/><Header/><main id="conteudo" className={isSubpage ? "subpage-main" : undefined} tabIndex={-1}>{children}</main><Footer/><WhatsAppFloat/></>;
 }
