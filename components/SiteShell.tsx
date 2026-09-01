@@ -12,7 +12,6 @@ const nav = [
   ["/familias", "Para famílias"],
   ["/clinicas", "Clínicas parceiras"],
   ["/sobre", "Sobre nós"],
-  ["/qa", "Qualidade"],
 ];
 
 function ScrollToTopOnRouteChange() {
@@ -23,9 +22,6 @@ function ScrollToTopOnRouteChange() {
     if (previousPathname.current === pathname) return;
     previousPathname.current = pathname;
 
-    // Cross-page links with a hash keep the browser's native anchor behavior.
-    // Every other route change starts at the top, even when history restoration
-    // or a persistent App Router layout would otherwise retain the old offset.
     const frame = window.requestAnimationFrame(() => {
       if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     });
@@ -58,7 +54,7 @@ export function Footer() {
   return <footer className="site-footer">
     <div className="footer-main">
       <div><Link className="brand brand-light" href="/"><span className="brand-mark">NJ</span><span><strong>NEW JOURNEY</strong><small>{siteConfig.tagline}</small></span></Link><p>Orientação responsável para decisões mais seguras.</p></div>
-      <div><h2>Navegação</h2><Link href="/tratamentos">Tratamentos</Link><Link href="/familias">Para famílias</Link><Link href="/clinicas">Clínicas parceiras</Link><Link href="/qa">Qualidade e QA</Link></div>
+      <div><h2>Navegação</h2><Link href="/tratamentos">Tratamentos</Link><Link href="/familias">Para famílias</Link><Link href="/clinicas">Clínicas parceiras</Link><Link href="/sobre">Sobre nós</Link></div>
       <div><h2>Atendimento</h2><p>24 horas, todos os dias</p><p>{siteConfig.region}</p><a className="footer-whatsapp" href={defaultWhatsappUrl} target="_blank" rel="noreferrer">Falar pelo WhatsApp</a></div>
     </div>
     <div className="footer-legal"><span>© 2026 New Journey.</span><Link href="/privacidade">Privacidade e LGPD</Link><span>Em risco imediato, ligue 192 ou 190.</span></div>
