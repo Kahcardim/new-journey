@@ -1,48 +1,92 @@
-/* Página Famílias — cards primeiro, conteúdo editorial depois, sem recorte de imagem. */
+/* Página Famílias: cards primeiro; imagem editorial secundária, inteira e sem recorte. */
 .family-editorial{
-  width:min(1180px,calc(100% - 40px));
-  margin:44px auto 0;
+  width:min(1080px,calc(100% - 40px));
+  margin:42px auto 0;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(420px,.9fr);
-  gap:40px;
+  grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+  gap:44px;
   align-items:center;
-  padding:34px;
-  background:#fff;
+  padding:38px;
+  background:#f8f6ef;
   border:1px solid var(--line);
   border-radius:24px;
-  box-shadow:0 16px 40px rgba(10,52,49,.07)
 }
 .family-editorial-copy{max-width:560px}
-.family-editorial-copy h2{margin:12px 0 16px;font-size:clamp(2.5rem,4vw,4rem);line-height:1.03;max-width:12ch}
-.family-editorial-copy p{margin:0 0 24px;color:var(--muted);line-height:1.7;font-size:1rem}
-.family-editorial-photo{margin:0;display:flex;align-items:center;justify-content:center;background:#eef3ef;border-radius:18px;padding:18px;overflow:hidden}
-.family-editorial-photo img{display:block;width:100%;height:auto;object-fit:contain;max-height:520px;border-radius:14px}
+.family-editorial-copy h2{
+  max-width:12ch;
+  margin:12px 0 16px;
+  font-size:clamp(2.35rem,3.6vw,3.7rem);
+  line-height:1.04;
+}
+.family-editorial-copy p{
+  margin:0 0 24px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.family-editorial-photo{
+  width:100%;
+  max-width:430px;
+  margin:0 0 0 auto;
+}
+.family-editorial-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:18px;
+  box-shadow:0 14px 34px rgba(10,52,49,.10);
+}
+.family-content{
+  width:min(1080px,calc(100% - 40px));
+  margin-inline:auto;
+  padding-top:44px;
+  padding-bottom:68px;
+}
+.family-content .do-dont{margin:0 0 38px}
+.family-content .do-dont>div{
+  border-radius:20px;
+  box-shadow:0 10px 28px rgba(10,52,49,.05);
+}
+.family-content .warm-callout{
+  margin-top:0;
+  border:1px solid var(--line);
+  border-radius:22px;
+}
 
-.family-content{width:min(1180px,calc(100% - 40px));margin-inline:auto;padding-top:50px;padding-bottom:72px}
-.content-page .do-dont{margin-top:0;margin-bottom:42px}
-.content-page .do-dont>div{border-radius:20px;box-shadow:0 12px 32px rgba(10,52,49,.055)}
-.content-page .warm-callout{border-radius:24px;border:1px solid var(--line);margin-top:0}
-
-@media (max-width:980px){
-  .family-editorial{width:min(100% - 32px,920px);grid-template-columns:1fr 1fr;gap:28px;padding:28px}
-  .family-editorial-copy h2{font-size:clamp(2.35rem,5vw,3.4rem)}
-  .family-content{width:min(100% - 32px,920px);padding-top:46px}
+@media (max-width:900px){
+  .family-editorial{
+    width:min(100% - 30px,820px);
+    grid-template-columns:1fr .8fr;
+    gap:28px;
+    padding:28px;
+  }
+  .family-editorial-photo{max-width:360px}
+  .family-content{width:min(100% - 30px,820px)}
 }
 
 @media (max-width:760px){
-  .family-editorial{width:min(100% - 28px,680px);grid-template-columns:1fr;padding:24px;gap:24px;margin-top:28px}
-  .family-editorial-copy{text-align:center;max-width:600px;margin-inline:auto}
-  .family-editorial-copy h2{font-size:clamp(2.25rem,9vw,3.2rem);max-width:13ch;margin-inline:auto}
+  .family-editorial{
+    width:calc(100% - 24px);
+    grid-template-columns:1fr;
+    padding:24px;
+    gap:0;
+    text-align:center;
+    margin-top:28px;
+  }
+  .family-editorial-copy{max-width:620px;margin-inline:auto}
+  .family-editorial-copy h2{
+    max-width:13ch;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:clamp(2.15rem,8.8vw,3rem);
+  }
   .family-editorial-copy p{font-size:.93rem;line-height:1.62}
   .family-editorial-copy .btn{margin-inline:auto}
-  .family-editorial-photo{padding:12px}
-  .family-editorial-photo img{max-height:none;width:100%;height:auto;object-fit:contain}
-  .family-content{width:min(100% - 28px,680px);padding-top:42px;padding-bottom:56px}
+  .family-editorial-photo{display:none}
+  .family-content{width:calc(100% - 24px);padding-top:36px;padding-bottom:52px}
 }
 
 @media (max-width:520px){
-  .family-editorial{width:calc(100% - 24px);padding:20px;border-radius:18px}
+  .family-editorial{padding:20px;border-radius:18px}
   .family-editorial-copy .btn{width:100%;justify-content:center}
-  .family-editorial-photo{padding:8px;border-radius:14px}
-  .family-content{width:calc(100% - 24px);padding-top:36px}
 }
