@@ -10,13 +10,12 @@ type ActionItem = {
   icon?: string;
 };
 
-export function SubpageIntro({ kicker, title, description }: { kicker: string; title: string; description?: string }) {
+export function SubpageIntro({ kicker, title }: { kicker: string; title: string }) {
   return (
-    <section className="page-intro">
+    <header className="page-intro">
       <span className="kicker">{kicker}</span>
       <h1>{title}</h1>
-      {description ? <p>{description}</p> : null}
-    </section>
+    </header>
   );
 }
 
@@ -24,28 +23,28 @@ export function PrimaryActionGrid({
   id,
   kicker,
   title,
-  description,
+  note,
   items,
 }: {
   id?: string;
   kicker: string;
   title: string;
-  description?: string;
+  note?: string;
   items: ActionItem[];
 }) {
+  const headingId = id ? `${id}-title` : undefined;
+
   return (
-    <section id={id} className="priority-panel priority-panel-primary" aria-labelledby={id ? `${id}-title` : undefined}>
+    <section id={id} className="priority-panel priority-panel-primary" aria-labelledby={headingId}>
       <div className="priority-panel-head">
-        <div>
-          <span className="kicker">{kicker}</span>
-          <h2 id={id ? `${id}-title` : undefined}>{title}</h2>
-        </div>
-        {description ? <p>{description}</p> : null}
+        <span className="kicker">{kicker}</span>
+        <h2 id={headingId}>{title}</h2>
       </div>
+
       <div className="priority-grid priority-grid-actionable">
         {items.map((item) => (
           <article className="priority-action-card" key={item.title}>
-            {item.icon ? <Icon name={item.icon} size={28} /> : <span>{item.number}</span>}
+            {item.icon ? <Icon name={item.icon} size={28} /> : <span className="priority-card-number">{item.number}</span>}
             <h3>{item.title}</h3>
             <p>{item.text}</p>
             {item.href.startsWith("#") ? (
@@ -56,6 +55,8 @@ export function PrimaryActionGrid({
           </article>
         ))}
       </div>
+
+      {note ? <p className="priority-panel-note">{note}</p> : null}
     </section>
   );
 }
